@@ -1,0 +1,7 @@
+.ui-container {
+    z-index: 21;
+    width: 100%;
+    border: 2px dashed #EBEBEB !important;
+    overflow: hidden;
+    display: block;
+}

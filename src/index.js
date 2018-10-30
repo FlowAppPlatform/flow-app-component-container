@@ -5,6 +5,18 @@ import AppComponent from 'flow-app-component';
 import './css/theme/default.css';
 
 class ContainerComponent extends AppComponent {
+  static properties = {
+    iconUrl: '/assets/images/container-component.png',
+    name: 'Container',
+    type: 'ui-component',
+    componentType: 'container',
+    category: 'Wrappers',
+    parent: null,
+    showOnComponentsPanel: true,
+    isValuable: true,
+    allowsChildren: true
+  };
+
   constructor() {
     super();
     const newState = {
@@ -28,15 +40,8 @@ class ContainerComponent extends AppComponent {
           ],
         },
       ],
-      iconUrl: '/assets/images/container-component.png',
-      name: 'Container',
-      type: 'ui-component',
-      componentType: 'container',
-      category: 'Wrappers',
-      parent: null,
-      showOnComponentsPanel: true,
-      isValuable: true,
-      allowsChildren: true,
+
+      ...ContainerComponent.properties
     };
 
     this.state = Object.assign(this.state, newState); // merge two states together, and dont lose any parent state properties.

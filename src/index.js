@@ -37,7 +37,7 @@ class ContainerComponent extends AppComponent {
       showOnComponentsPanel: true,
       isValuable: true,
       allowsChildren: true,
-      allowedChildTypes: ['checkbox', 'link', 'image', 'input', 'form', 'search', 'text', 'page', 'loader', 'radio', 'map', 'nav', 'video', 'dropdown'],
+      allowedChildTypes: ['checkbox', 'link', 'image', 'input', 'form', 'search', 'text', 'loader', 'radio', 'map', 'nav', 'video', 'dropdown'],
     };
 
     this.state = Object.assign(this.state, newState); // merge two states together, and dont lose any parent state properties.

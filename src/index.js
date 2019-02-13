@@ -43,6 +43,11 @@ class ContainerComponent extends AppComponent {
     this.state = Object.assign(this.state, newState); // merge two states together, and dont lose any parent state properties.
   }
 
+  triggerGraphEvent = () => {
+    const graphId = this.getPropertyData('event');
+    this.getElementProps().onEvent(graphId)
+  }
+
   renderContent() {
     let customStyles = {};
     if (!this.props.hasChildren) {
@@ -54,7 +59,11 @@ class ContainerComponent extends AppComponent {
       };
     }
     return (
-      <div className="ui-container" style={customStyles}>
+      <div
+        className="ui-container" 
+        style={customStyles}
+        onMouseOver={this.triggerGraphEvent}
+      >
         {!this.props.hasChildren && <span>Container</span>}
         {this.renderChildren()}
       </div>

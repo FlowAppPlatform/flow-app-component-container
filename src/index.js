@@ -19,8 +19,15 @@ class ContainerComponent extends AppComponent {
           categoryDescription: 'Events for the container',
           properties: [
             {
-              id: 'event',
-              name: 'Events',
+              id: 'load',
+              name: 'Load Event',
+              type: 'graph',
+              options: {},
+              data: null,
+            },
+            {
+              id: 'hover',
+              name: 'Hover Event',
               type: 'graph',
               options: {},
               data: null,
@@ -43,8 +50,12 @@ class ContainerComponent extends AppComponent {
     this.state = Object.assign(this.state, newState); // merge two states together, and dont lose any parent state properties.
   }
 
-  triggerGraphEvent = () => {
-    const graphId = this.getPropertyData('event');
+  componentDidMount() {
+    this.triggerGraphEvent('load')
+  }
+
+  triggerGraphEvent = (eventId) => {
+    const graphId = this.getPropertyData(eventId);
     this.getElementProps().onEvent(graphId)
   }
 
@@ -62,7 +73,7 @@ class ContainerComponent extends AppComponent {
       <div
         className="ui-container" 
         style={customStyles}
-        onMouseOver={this.triggerGraphEvent}
+        onMouseOver={() => this.triggerGraphEvent('hover')}
       >
         {!this.props.hasChildren && <span>Container</span>}
         {this.renderChildren()}
